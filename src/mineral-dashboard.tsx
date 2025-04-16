@@ -1522,12 +1522,11 @@ const simulateAnalysis = (data: InputData) => {
                   />
                 </div>
                 <h3 className="ml-4 text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
-                  Mineral Exploration AI
-                </h3>
+EarthScience.AI                </h3>
               </div>
               <p className="text-gray-400 mb-6">Advanced Geological Analysis System</p>
               <div className="flex items-center justify-center space-x-6 text-sm text-gray-400">
-                <span>© 2025 Mineral Exploration Systems Inc.</span>
+                <span>© 2025 EarthScience.AI Inc.</span>
                 <span className="text-gray-600">•</span>
                 <a href="#" className="hover:text-blue-400 transition-colors">Privacy Policy</a>
                 <span className="text-gray-600">•</span>
