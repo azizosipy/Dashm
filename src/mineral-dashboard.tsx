@@ -1267,13 +1267,12 @@ const simulateAnalysis = (data: InputData) => {
               <div className="flex space-x-4">
                 <button className="px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-800 text-white rounded-xl text-sm flex items-center hover:scale-105 transform transition-all duration-300 shadow-lg shadow-blue-500/20">
                   <Database size={18} className="mr-2" /> 
-                  <span>
-                  RAG system ( EarthScience Knowledge )</span>
+                  <span>RAG system ( EarthScience Knowledge )</span>
                   <div className="w-2 h-2 bg-green-400 rounded-full ml-2 animate-pulse"></div>
                 </button>
                 <button className="px-6 py-3 bg-gradient-to-r from-cyan-600 to-cyan-800 text-white rounded-xl text-sm flex items-center hover:scale-105 transform transition-all duration-300 shadow-lg shadow-cyan-500/20">
                   <Map size={18} className="mr-2" /> 
-                  <span>RAG System (EarthScience knowledge)</span>
+                  <span>GIS Enabled</span>
                   <div className="w-2 h-2 bg-green-400 rounded-full ml-2 animate-pulse"></div>
                 </button>
                 <button className="px-6 py-3 bg-gradient-to-r from-teal-600 to-teal-800 text-white rounded-xl text-sm flex items-center hover:scale-105 transform transition-all duration-300 shadow-lg shadow-teal-500/20">
@@ -1471,7 +1470,7 @@ const simulateAnalysis = (data: InputData) => {
                 <div className="flex border-b border-gray-700/50 mb-8 overflow-x-auto scrollbar-hide">
                   {[
                     { icon: <PieChart className="w-5 h-5" />, text: "Deposit Type" },
-                    { icon: <Database className="w-5 h-5" />, text: "Agnt System http" },
+                    { icon: <Database className="w-5 h-5" />, text: "Knowledge Base" },
                     { icon: <Brain className="w-5 h-5" />, text: "Agent System ( EarthScience.AI )" },
                     { icon: <Map className="w-5 h-5" />, text: "Geological Maps" },
                     { icon: <BarChart className="w-5 h-5" />, text: "Mineralization" },
