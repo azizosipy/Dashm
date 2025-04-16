@@ -761,136 +761,140 @@ const simulateAnalysis = (data: InputData) => {
   
   // Components
   const InputForm = () => (
-    <div className="glass-effect rounded-xl shadow-lg mb-6 slide-in">
-      <div className="p-6">
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-900 to-blue-600 bg-clip-text text-transparent">
+    <div className="backdrop-blur-xl bg-white/5 rounded-2xl shadow-2xl p-8 transform transition-all duration-500">
+      <div className="relative z-10">
+        <div className="flex items-center justify-between mb-8">
+          <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-400 via-cyan-300 to-teal-200 bg-clip-text text-transparent">
             Geological Input Data
           </h2>
           <button
             onClick={runAnalysis}
             disabled={loading}
-            className="px-6 py-2 bg-gradient-to-r from-blue-900 to-blue-600 text-white rounded-lg flex items-center hover-scale shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+            className="px-8 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-xl flex items-center hover:scale-105 transform transition-all duration-300 shadow-lg shadow-blue-500/20 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? (
               <>
                 <RefreshCw size={20} className="mr-2 animate-spin" />
-                Processing...
+                <span>Processing...</span>
               </>
             ) : (
               <>
                 <Zap size={20} className="mr-2" />
-                Run Analysis
+                <span>Run Analysis</span>
               </>
             )}
           </button>
         </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="space-y-4">
-        <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Host Rocks</label>
-          <textarea
-            name="host_rocks"
-            value={inputData.host_rocks.join('\n')}
-            onChange={(e) => setInputData(prev => ({
-              ...prev,
-              host_rocks: e.target.value.split('\n')
-            }))}
-                className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-            rows={2}
-          />
-        </div>
-            
-        <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Geological Features</label>
-          <textarea
-            name="geological_features"
-            value={inputData.geological_features.join('\n')}
-            onChange={(e) => setInputData(prev => ({
-              ...prev,
-              geological_features: e.target.value.split('\n')
-            }))}
-                className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-            rows={2}
-          />
-        </div>
-            
-        <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Deposit Type</label>
-          <input
-            type="text"
-            name="deposit_type"
-            value={inputData.deposit_type}
-            onChange={handleInputChange}
-                className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-          />
-        </div>
-          </div>
-          
-          <div className="space-y-4">
-        <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Mineralogy</label>
-          <textarea
-            name="mineralogy"
-            value={inputData.mineralogy.join('\n')}
-            onChange={(e) => setInputData(prev => ({
-              ...prev,
-              mineralogy: e.target.value.split('\n')
-            }))}
-                className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-            rows={2}
-          />
-        </div>
-            
-        <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Location</label>
-              <div className="flex space-x-2">
-          <input
-                  type="number"
-                  placeholder="Latitude"
-                  value={inputData.location.latitude}
-                  onChange={(e) => setInputData(prev => ({
-                ...prev,
-                    location: { ...prev.location, latitude: parseFloat(e.target.value) }
-                  }))}
-                  className="w-1/2 px-4 py-2 rounded-lg border border-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                />
-          <input
-                  type="number"
-                  placeholder="Longitude"
-                  value={inputData.location.longitude}
-                  onChange={(e) => setInputData(prev => ({
-                    ...prev,
-                    location: { ...prev.location, longitude: parseFloat(e.target.value) }
-                  }))}
-                  className="w-1/2 px-4 py-2 rounded-lg border border-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-          />
-        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="space-y-6">
+            <div className="group">
+              <label className="block text-sm font-medium text-gray-300 mb-2">Host Rocks</label>
+              <textarea
+                name="host_rocks"
+                value={inputData.host_rocks.join('\n')}
+                onChange={(e) => setInputData(prev => ({
+                  ...prev,
+                  host_rocks: e.target.value.split('\n')
+                }))}
+                className="w-full px-4 py-3 bg-gray-800/50 text-gray-200 rounded-xl border border-gray-700 focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all resize-none backdrop-blur-xl"
+                rows={3}
+              />
             </div>
-            
+
+            <div className="group">
+              <label className="block text-sm font-medium text-gray-300 mb-2">Geological Features</label>
+              <textarea
+                name="geological_features"
+                value={inputData.geological_features.join('\n')}
+                onChange={(e) => setInputData(prev => ({
+                  ...prev,
+                  geological_features: e.target.value.split('\n')
+                }))}
+                className="w-full px-4 py-3 bg-gray-800/50 text-gray-200 rounded-xl border border-gray-700 focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all resize-none backdrop-blur-xl"
+                rows={3}
+              />
+            </div>
+
+            <div className="group">
+              <label className="block text-sm font-medium text-gray-300 mb-2">Deposit Type</label>
+              <input
+                type="text"
+                name="deposit_type"
+                value={inputData.deposit_type}
+                onChange={handleInputChange}
+                className="w-full px-4 py-3 bg-gray-800/50 text-gray-200 rounded-xl border border-gray-700 focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all backdrop-blur-xl"
+              />
+            </div>
+          </div>
+
+          <div className="space-y-6">
+            <div className="group">
+              <label className="block text-sm font-medium text-gray-300 mb-2">Mineralogy</label>
+              <textarea
+                name="mineralogy"
+                value={inputData.mineralogy.join('\n')}
+                onChange={(e) => setInputData(prev => ({
+                  ...prev,
+                  mineralogy: e.target.value.split('\n')
+                }))}
+                className="w-full px-4 py-3 bg-gray-800/50 text-gray-200 rounded-xl border border-gray-700 focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all resize-none backdrop-blur-xl"
+                rows={3}
+              />
+            </div>
+
+            <div className="group">
+              <label className="block text-sm font-medium text-gray-300 mb-2">Location</label>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <input
+                    type="number"
+                    placeholder="Latitude"
+                    value={inputData.location.latitude}
+                    onChange={(e) => setInputData(prev => ({
+                      ...prev,
+                      location: { ...prev.location, latitude: parseFloat(e.target.value) }
+                    }))}
+                    className="w-full px-4 py-3 bg-gray-800/50 text-gray-200 rounded-xl border border-gray-700 focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all backdrop-blur-xl"
+                  />
+                </div>
+                <div>
+                  <input
+                    type="number"
+                    placeholder="Longitude"
+                    value={inputData.location.longitude}
+                    onChange={(e) => setInputData(prev => ({
+                      ...prev,
+                      location: { ...prev.location, longitude: parseFloat(e.target.value) }
+                    }))}
+                    className="w-full px-4 py-3 bg-gray-800/50 text-gray-200 rounded-xl border border-gray-700 focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all backdrop-blur-xl"
+                  />
+                </div>
+              </div>
+            </div>
+
             <div className="grid grid-cols-2 gap-4">
-        <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Grade</label>
-          <input
-            type="number"
-            name="grade"
-            value={inputData.grade}
-            onChange={handleInputChange}
-                  className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-          />
-        </div>
-        <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Tonnage</label>
-          <input
-            type="number"
-            name="tonnage"
-            value={inputData.tonnage}
-            onChange={handleInputChange}
-                  className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-          />
-        </div>
-      </div>
+              <div className="group">
+                <label className="block text-sm font-medium text-gray-300 mb-2">Grade</label>
+                <input
+                  type="number"
+                  name="grade"
+                  value={inputData.grade}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 bg-gray-800/50 text-gray-200 rounded-xl border border-gray-700 focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all backdrop-blur-xl"
+                />
+              </div>
+              <div className="group">
+                <label className="block text-sm font-medium text-gray-300 mb-2">Tonnage</label>
+                <input
+                  type="number"
+                  name="tonnage"
+                  value={inputData.tonnage}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 bg-gray-800/50 text-gray-200 rounded-xl border border-gray-700 focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all backdrop-blur-xl"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -905,19 +909,19 @@ const simulateAnalysis = (data: InputData) => {
         name: 'Porphyry',
         value: 0.53,
         color: '#3B82F6',
-        description: 'Type de gisement le plus courant'
+        description: 'Most common deposit type'
       },
       { 
         name: 'Skarn',
         value: 0.28,
         color: '#22C55E',
-        description: 'Type significatif mais moins répandu'
+        description: 'Significant but less common type'
       },
       { 
         name: 'IOCG',
         value: 0.19,
         color: '#EAB308',
-        description: 'Type le moins fréquent'
+        description: 'Least frequent type'
       }
     ];
     
@@ -926,17 +930,11 @@ const simulateAnalysis = (data: InputData) => {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold text-gray-900 mb-2">
-              Distribution des Types de Gisements
+              Deposit Type Distribution
             </h2>
             <div className="w-24 h-1 bg-blue-500 mx-auto rounded-full"></div>
-              </div>
+          </div>
 
-          <div className="relative">
-           
-           
-          
-            </div>
-            
           <div className="grid grid-cols-3 gap-4 mt-8">
             {depositData.map((item, index) => (
               <div 
@@ -950,22 +948,22 @@ const simulateAnalysis = (data: InputData) => {
                     style={{ backgroundColor: item.color }}
                   ></div>
                   <span className="font-semibold text-gray-900">{item.name}</span>
-                  </div>
+                </div>
                 <div className="text-2xl font-bold" style={{ color: item.color }}>
                   {(item.value * 100).toFixed(1)}%
-              </div>
+                </div>
                 <div className="text-sm text-gray-600 mt-1">
                   {item.description}
-            </div>
-          </div>
+                </div>
+              </div>
             ))}
-            </div>
+          </div>
 
           <div className="mt-8 p-4 bg-gray-50 rounded-xl">
             <p className="text-gray-700 text-center">
-              La distribution montre une prédominance des gisements de type Porphyry (53%), 
-              suivis par les gisements de type Skarn (28%) et IOCG (19%). Cette répartition 
-              est typique des régions à fort potentiel en cuivre-or porphyrique.
+              The distribution shows a predominance of Porphyry deposits (53%), 
+              followed by Skarn deposits (28%) and IOCG (19%). This distribution 
+              is typical of regions with high porphyry copper-gold potential.
             </p>
           </div>
         </div>
@@ -1259,7 +1257,7 @@ const simulateAnalysis = (data: InputData) => {
                 </div>
                 <div>
                   <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-400 via-cyan-300 to-teal-200 bg-clip-text text-transparent">
-                    Mineral Exploration AI
+                  EarthScience.AI
                   </h1>
                   <p className="text-gray-300 mt-2 text-lg">
                     Advanced Geological Analysis and Exploration Optimization System
@@ -1302,12 +1300,12 @@ const simulateAnalysis = (data: InputData) => {
                   {loading ? (
                     <>
                       <RefreshCw size={20} className="mr-2 animate-spin" />
-                      <span>Traitement en cours...</span>
+                      <span>Processing...</span>
                     </>
                   ) : (
                     <>
                       <Zap size={20} className="mr-2" />
-                      <span>Lancer l'Analyse</span>
+                      <span>Run Analysis</span>
                     </>
                   )}
                 </button>
@@ -1316,7 +1314,7 @@ const simulateAnalysis = (data: InputData) => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-6">
                   <div className="group">
-                    <label className="block text-sm font-medium text-gray-300 mb-2">Roches Hôtes</label>
+                    <label className="block text-sm font-medium text-gray-300 mb-2">Host Rocks</label>
                     <textarea
                       name="host_rocks"
                       value={inputData.host_rocks.join('\n')}
@@ -1330,7 +1328,7 @@ const simulateAnalysis = (data: InputData) => {
                   </div>
 
                   <div className="group">
-                    <label className="block text-sm font-medium text-gray-300 mb-2">Caractéristiques Géologiques</label>
+                    <label className="block text-sm font-medium text-gray-300 mb-2">Geological Features</label>
                     <textarea
                       name="geological_features"
                       value={inputData.geological_features.join('\n')}
@@ -1344,7 +1342,7 @@ const simulateAnalysis = (data: InputData) => {
                   </div>
 
                   <div className="group">
-                    <label className="block text-sm font-medium text-gray-300 mb-2">Type de Gisement</label>
+                    <label className="block text-sm font-medium text-gray-300 mb-2">Deposit Type</label>
                     <input
                       type="text"
                       name="deposit_type"
@@ -1357,7 +1355,7 @@ const simulateAnalysis = (data: InputData) => {
 
                 <div className="space-y-6">
                   <div className="group">
-                    <label className="block text-sm font-medium text-gray-300 mb-2">Minéralogie</label>
+                    <label className="block text-sm font-medium text-gray-300 mb-2">Mineralogy</label>
                     <textarea
                       name="mineralogy"
                       value={inputData.mineralogy.join('\n')}
@@ -1371,7 +1369,7 @@ const simulateAnalysis = (data: InputData) => {
                   </div>
 
                   <div className="group">
-                    <label className="block text-sm font-medium text-gray-300 mb-2">Localisation</label>
+                    <label className="block text-sm font-medium text-gray-300 mb-2">Location</label>
                     <div className="grid grid-cols-2 gap-4">
                       <div>
                         <input
@@ -1402,7 +1400,7 @@ const simulateAnalysis = (data: InputData) => {
 
                   <div className="grid grid-cols-2 gap-4">
                     <div className="group">
-                      <label className="block text-sm font-medium text-gray-300 mb-2">Teneur</label>
+                      <label className="block text-sm font-medium text-gray-300 mb-2">Grade</label>
                       <input
                         type="number"
                         name="grade"
@@ -1439,10 +1437,10 @@ const simulateAnalysis = (data: InputData) => {
                 </div>
               </div>
               <h3 className="text-3xl font-bold bg-gradient-to-r from-blue-400 via-cyan-300 to-teal-200 bg-clip-text text-transparent mb-2">
-                Analyse en Cours
+                Analysis in Progress
               </h3>
               <div className="text-gray-500">
-                Traitement des données géologiques et génération des recommandations...
+                Processing geological data and generating recommendations...
               </div>
               <div className="mt-6 flex space-x-2 items-center justify-center">
                 <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
@@ -1464,21 +1462,21 @@ const simulateAnalysis = (data: InputData) => {
                   </div>
                 </div>
                 <h2 className="text-3xl font-bold bg-gradient-to-r from-green-400 to-emerald-300 bg-clip-text text-transparent">
-                  Analyse Complétée
+                  Analysis Complete
                 </h2>
               </div>
 
               <div className="relative">
                 <div className="flex border-b border-gray-700/50 mb-8 overflow-x-auto scrollbar-hide">
                   {[
-                    { icon: <PieChart className="w-5 h-5" />, text: "Type de Gisement" },
-                    { icon: <Database className="w-5 h-5" />, text: "Base de Connaissances" },
-                    { icon: <Brain className="w-5 h-5" />, text: "Système Agentique" },
-                    { icon: <Map className="w-5 h-5" />, text: "Cartes Géologiques" },
-                    { icon: <BarChart className="w-5 h-5" />, text: "Minéralisation" },
-                    { icon: <Search className="w-5 h-5" />, text: "Plan d'Exploration" },
-                    { icon: <Terminal className="w-5 h-5" />, text: "Gisements Similaires" },
-                    { icon: <Award className="w-5 h-5" />, text: "Niveau de Confiance" }
+                    { icon: <PieChart className="w-5 h-5" />, text: "Deposit Type" },
+                    { icon: <Database className="w-5 h-5" />, text: "Knowledge Base" },
+                    { icon: <Brain className="w-5 h-5" />, text: "Agent System" },
+                    { icon: <Map className="w-5 h-5" />, text: "Geological Maps" },
+                    { icon: <BarChart className="w-5 h-5" />, text: "Mineralization" },
+                    { icon: <Search className="w-5 h-5" />, text: "Exploration Plan" },
+                    { icon: <Terminal className="w-5 h-5" />, text: "Similar Deposits" },
+                    { icon: <Award className="w-5 h-5" />, text: "Confidence Level" }
                   ].map((tab, index) => (
                     <button 
                       key={index}
